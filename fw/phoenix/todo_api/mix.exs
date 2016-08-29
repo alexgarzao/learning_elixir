@@ -22,6 +22,10 @@ defmodule TodoApi.Mixfile do
                     :phoenix_ecto, :postgrex]]
   end
 
+  def swagger_info do
+    [version: "1.2.3", title: "TODO public API"]
+  end
+
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
   defp elixirc_paths(_),     do: ["lib", "web"]
@@ -37,7 +41,8 @@ defmodule TodoApi.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:phoenix_swagger, "~> 0.1.4"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

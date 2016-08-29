@@ -1,5 +1,6 @@
 defmodule TodoApi.TodoController do
   use TodoApi.Web, :controller
+  use PhoenixSwagger
 
   alias TodoApi.Todo
 
@@ -51,5 +52,24 @@ defmodule TodoApi.TodoController do
     Repo.delete!(todo)
 
     send_resp(conn, :no_content, "")
+  end
+
+  swagger_model :index do
+    description "Get persons according to the age"
+    parameter :query, :id, :integer, :required
+    responses 200, "Description", schema
+  end
+
+  def schema do
+    %{type: :array, title: "Persons",
+      items:
+        %{title: "Person", type: :object, properties: %{ name: %{type: :string}}}
+     }
+    end
+
+  def get_person_schema(conn, _params) do
+    #   ...
+    #   ...
+    #   ...
   end
 end
